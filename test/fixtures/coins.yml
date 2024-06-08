@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  denomination: MyString
+  generation: MyString
+  year: 1
+  mint: MyString
+
+two:
+  denomination: MyString
+  generation: MyString
+  year: 1
+  mint: MyString

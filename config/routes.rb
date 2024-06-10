@@ -1,10 +1,32 @@
 Rails.application.routes.draw do
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  
+#coins
+get "/coins" => "coins#index"
+get "/coins:id" => "coins#show"
+post "/coins" => "coins#create"
+patch "/coins/:id" => "coins#update"
+delete "/coins/:id" => "coins#destroy"
 
-  # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
-  # Can be used by load balancers and uptime monitors to verify that the app is live.
-  get "up" => "rails/health#show", as: :rails_health_check
+#collection
+get "/collection" => "collection#index"
+get "/collection:id" => "collection#show"
+post "/collection" => "collection#create"
+patch "/collection/:id" => "collection#update"
+delete "/collection/:id" => "collection#destroy"
 
-  # Defines the root path route ("/")
-  # root "posts#index"
+#wishlist
+
+get "/wishlist" => "wishlist#index"
+get "/wishlist:id" => "wishlist#show"
+post "/wishlist" => "wishlist#create"
+patch "/wishlist/:id" => "wishlist#update"
+delete "/wishlist/:id" => "wishlist#destroy"
+
+#users
+get "/users" => "users#index"
+get "/users:id" => "users#show"
+post "/users" => "users#create"
+patch "/users/:id" => "users#update"
+delete "/users/:id" => "users#destroy"
+
 end

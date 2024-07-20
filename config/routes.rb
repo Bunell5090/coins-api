@@ -29,4 +29,6 @@ post "/users" => "users#create"
 patch "/users/:id" => "users#update"
 delete "/users/:id" => "users#destroy"
 
+#sessions
+post "/sessions" => "sessions#create"
 end

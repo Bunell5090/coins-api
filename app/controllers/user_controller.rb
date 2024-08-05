@@ -7,10 +7,9 @@ class UsersController < ApplicationController
 
   def create
     user = User.new(
-      user_name: params[:user_name],
       first_name: params[:first_name],
       last_name: params[:last_name],
-      position: params[:position],
+      email: params[:email],
       password: params[:password],
       password_confirmation: params[:password_confirmation]
     )
@@ -24,10 +23,11 @@ class UsersController < ApplicationController
   def update
     id = params[:id]
     user = User.find_by(id: id)
-    user.user_name = params["user_name"] || user.user_name
     user.first_name = params["first_name"] || user.first_name
     user.last_name = params["last_name"] || user.last_name
-    user.position = params["position"] || user.position
+    user.email = params["email"] || user.email
+    user.password = params["password"] || user.password
+    user.password_confirmation = params["password_confirmation"] || user.password_confirmation
     user.password_digest = params["password_digest"] || user.password_digest
     if user.save #happy path
       render json: user

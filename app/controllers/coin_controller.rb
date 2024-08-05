@@ -23,9 +23,9 @@ class CoinController < ApplicationController
     cert_number: params[:cert_number]
   )
   if coin.save
-    render json: coin, status: :created
+    render json: { message: "Coin added successfully" }, status: :created
   else
-    render json: coin.errors, status: :unprocessable_entity
+    render json: { errors: coin.errors.full_messages }, status: :bad_request
   end
   
 end

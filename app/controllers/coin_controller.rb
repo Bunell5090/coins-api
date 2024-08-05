@@ -28,4 +28,29 @@ class CoinController < ApplicationController
     render json: { errors: coin.errors.full_messages }, status: :bad_request
   end
   
+  def update
+    id = params[:id]
+    coin = Coin.find_by(id: id)
+    coin.denomination = params["denomination"] || coin.denomination
+    coin.coin_type = params["coin_type"] || coin.coin_type
+    coin.year = params["year"] || coin.year
+    coin.mint = params["mint"] || coin.mint
+    coin.circulated = params["circulated"] || coin.circulated
+    coin.proof = params["proof"] || coin.proof
+    coin.graded = params["graded"] || coin.graded
+    coin.grading_company = params["grading_company"] || coin.grading_company
+    coin.cert_number = params["cert_number"] || coin.cert_number
+    if coin.save #happy path
+      render json: coin
+    else #sad path
+      render json: {error_messages: coin.errors.full_messages}, status: 422
+    end
+  end
+
+  def destroy
+    customer_id = params["id"]
+    coin = Coin.find_by(id: customer_id)
+    coin.destroy
+    render json: {message: "Coin has been deleted!"}
+  end
 end
